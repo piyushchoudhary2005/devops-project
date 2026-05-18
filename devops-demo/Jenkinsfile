@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/your-username/devops-project.git'
+            }
+        }
+
+        stage('Build Backend Image') {
+            steps {
+                bat 'docker build -t devops-backend ./backend'
+            }
+        }
+
+        stage('Build Frontend Image') {
+            steps {
+                bat 'docker build -t devops-frontend ./frontend'
+            }
+        }
+
+        stage('Run Containers') {
+            steps {
+                bat 'docker-compose down'
+                bat 'docker-compose up -d --build'
+            }
+        }
+    }
+}
