@@ -1,5 +1,6 @@
 from flask import Flask
 import mysql.connector
+from flask_cors import CORS
 
 app = Flask(__name__)
 
