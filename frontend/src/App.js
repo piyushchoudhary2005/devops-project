@@ -12,6 +12,7 @@ function App() {
   return (
     <div>
       <h1>Frontend Running</h1>
+      <h1>Hello Jenkins CI/CD 🚀</h1>
       <h2>{message}</h2>
     </div>
   );
