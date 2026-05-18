@@ -2,12 +2,15 @@ version: '3'
 
 services:
 
+  services:
   frontend:
     build: ./frontend
     ports:
       - "3001:3000"
     environment:
-     - HOST=0.0.0.0
+      - HOST=0.0.0.0
+    depends_on:
+      - backend
 
   backend:
     build: ./backend
@@ -15,8 +18,12 @@ services:
       - "5001:5000"
     depends_on:
       - db
+    environment:
+      - DB_HOST=db
 
   db:
     image: mysql:8
     environment:
       MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
