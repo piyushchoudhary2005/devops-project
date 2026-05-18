@@ -4,7 +4,7 @@ function App() {
   const [msg, setMsg] = useState("");
 
   const callBackend = async () => {
-    const res = await fetch("http://localhost:5000/");
+    const res = await fetch("http://localhost:5001/");
     const data = await res.text();
     setMsg(data);
   };
