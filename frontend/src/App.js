@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [msg, setMsg] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api")
-      .then((res) => res.text())
-      .then((data) => setMessage(data));
-  }, []);
+  const callBackend = async () => {
+    const res = await fetch("http://localhost:5000/");
+    const data = await res.text();
+    setMsg(data);
+  };
 
   return (
-    <div>
-      <h1>Frontend Running</h1>
-      <h1>Hello Jenkins CI/CD16 🚀</h1>
-      <h2>{message}</h2>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>DevOps Full Stack Demo</h1>
+
+      <button onClick={callBackend}>
+        Call Backend
+      </button>
+
+      <h2>{msg}</h2>
     </div>
   );
 }
